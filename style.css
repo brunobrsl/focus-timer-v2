@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --hue: 240;
+
+  --bg-color: hsl(var(--hue), 5%, 7%);
+  --bg-input: hsl(var(--hue), 0%, 14%);
+  --bg-input-active: hsl(var(--hue), 100%, 63%);
+  --text-color: hsl(var(--hue), 0%, 100%);
+  --button-primary: hsl(var(--hue), 100%, 63%);
+  --button-secondary: hsl(var(--hue), 0%, 100%);
+  
+  font-size: clamp(40%, 1% + 2vw, 62.5%);
+}
+
+html.light {
+  --hue: 25;
+
+  --bg-color: hsl(var(--hue), 0%, 100%);
+  --text-color: hsl(var(--hue), 5%, 7%);
+  --bg-input: hsl(var(--hue), 9%, 89%);
+  --button-secondary: hsl(var(--hue), 5%, 7%);
+}
+
+html.light .ph-sun,
+html:not(.light) .ph-moon {
+  display: none;
+}
+
+#toggle-mode {
+  position: absolute;
+  top: 3.2rem;
+  right: 3.2rem;
+  font-size: 3.2rem;
+  line-height: 0;
+
+  color: var(--text-color);
+}
+
+/* screen reader only - accessibility */
+.sr-only {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  overflow: hidden;
+
+  margin: -1px;
+  padding: 0px;
+  border: 0;
+  appearance: none;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: grid;
+  height: 100vh;
+  place-content: center;
+}
+
+#app {
+  display: flex;
+  gap: 19.2rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.timer-controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4.8rem;
+}
+
+#timer {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12.8rem;
+}
+
+#controls {
+  gap: 4rem;
+  justify-content: center;
+}
+
+button {
+  background-color: transparent;
+  border: 0;
+  color: var(--button-secondary);
+  cursor: pointer;
+  font-size: 4.8rem;
+}
+
+#controls button.primary {
+  color: var(--button-primary);
+}
+
+#sound-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.2rem;
+}
+
+#sound-controls button {
+  font-size: 6rem;
+  border: 2px solid transparent;
+  border-radius: 2.4rem;
+  color: var(--button-secondary);
+  background-color: var(--bg-input);
+  padding: 4.4rem 3.6rem;
+  cursor: pointer;
+}
+
+#sound-controls button:hover {
+  border: 2px solid var(--bg-input-active);
+}
+
+/* timer controls */
+.running .ph-play-circle,
+.running .ph-timer,
+html:not(.running) .ph-pause-circle,
+html:not(.running) .ph-stop-circle {
+  display: none;
+}
+
+/* sound controls */
+#sound-controls button.active {
+  background-color: var(--bg-input-active);
+  color: var(--bg-color);
+  font-weight: 700;
+}
