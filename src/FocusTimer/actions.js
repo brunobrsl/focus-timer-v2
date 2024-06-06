@@ -16,7 +16,6 @@ export function reset() {
   timer.updateDisplay()
 
   sounds.buttonPressAudio.play()
-  sounds.bgReset()
 }
 
 export function set() {
@@ -37,10 +36,19 @@ export function removeFiveMinutes() {
 
 export function toggleForestSound() {
   sounds.buttonPressAudio.play()
-  state.isSoundPlaying = document.querySelector('.ph.ph-tree').classList.toggle('active')
+  state.isSoundPlaying = el.treeCard.classList.toggle('active')
+
+  el.rainCard.classList.remove('active')
+  el.coffeeShopCard.classList.remove('active')
+  el.fireplaceCard.classList.remove('active')
   
   if(state.isSoundPlaying) {
     sounds.bgAudioForest.play()
+
+    sounds.bgAudioRain.pause()
+    sounds.bgAudioCoffeeShop.pause()
+    sounds.bgAudioFireplace.pause()
+    
     return
   }
 
@@ -49,10 +57,19 @@ export function toggleForestSound() {
 
 export function toggleRainSound() {
   sounds.buttonPressAudio.play()
-  state.isSoundPlaying = document.querySelector('.ph.ph-cloud-rain').classList.toggle('active')
+  state.isSoundPlaying = el.rainCard.classList.toggle('active')
+
+  el.treeCard.classList.remove('active')
+  el.coffeeShopCard.classList.remove('active')
+  el.fireplaceCard.classList.remove('active')
   
   if(state.isSoundPlaying) {
     sounds.bgAudioRain.play()
+
+    sounds.bgAudioForest.pause()
+    sounds.bgAudioCoffeeShop.pause()
+    sounds.bgAudioFireplace.pause()
+  
     return
   }
 
@@ -61,10 +78,19 @@ export function toggleRainSound() {
 
 export function toggleCoffeeShopSound() {
   sounds.buttonPressAudio.play()
-  state.isSoundPlaying = document.querySelector('.ph.ph-storefront').classList.toggle('active')
+  state.isSoundPlaying = el.coffeeShopCard.classList.toggle('active')
+
+  el.treeCard.classList.remove('active')
+  el.rainCard.classList.remove('active')
+  el.fireplaceCard.classList.remove('active')
   
   if(state.isSoundPlaying) {
     sounds.bgAudioCoffeeShop.play()
+
+    sounds.bgAudioForest.pause()
+    sounds.bgAudioRain.pause()
+    sounds.bgAudioFireplace.pause()
+
     return
   }
 
@@ -73,10 +99,19 @@ export function toggleCoffeeShopSound() {
 
 export function toggleFireplace() {
   sounds.buttonPressAudio.play()
-  state.isSoundPlaying = document.querySelector('.ph.ph-fire').classList.toggle('active')
+  state.isSoundPlaying = el.fireplaceCard.classList.toggle('active')
+
+  el.treeCard.classList.remove('active')
+  el.rainCard.classList.remove('active')
+  el.coffeeShopCard.classList.remove('active')
   
   if(state.isSoundPlaying) {
     sounds.bgAudioFireplace.play()
+
+    sounds.bgAudioForest.pause()
+    sounds.bgAudioRain.pause()
+    sounds.bgAudioCoffeeShop.pause()
+
     return
   }
   
